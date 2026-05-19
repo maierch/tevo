@@ -1,0 +1,63 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'tevo'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=tevo",
+                    "--package=tevo"
+                ],
+                "filter": {
+                    "name": "tevo",
+                    "kind": "bin"
+                }
+            },
+            "args": [
+                "--force-overwrite",
+                "--model=xxz",
+                "--lattice-size=2,2",
+                "--wall-size=1,1",
+                "--wall-start=1,1",
+                "--gaussian-size=2,1",
+                "--gaussian-start=0,0",
+                "--gaussian-center=0.5",
+                "--tx=-0.5",
+                "--vx=8.0",
+                "--ty=0.0",
+                "--vy=0.0",
+                "--save-most-occupied-states=10"
+                // "--periodic-in-y",
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'tevo'",
+            "env": {
+                "LD_LIBRARY_PATH": "../smt/build"
+            },
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=tevo",
+                    "--package=tevo"
+                ],
+                "filter": {
+                    "name": "tevo",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
